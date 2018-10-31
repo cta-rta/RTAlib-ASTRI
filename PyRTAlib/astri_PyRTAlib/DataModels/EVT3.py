@@ -21,11 +21,11 @@ import time
 from random import randint, uniform
 
 
-from .EVTbase import EVTbase
-from ..Utils import time_mjd_to_tt
+from PyRTAlib.DataModels.EVTbase import EVTbase
+from PyRTAlib.Utils import time_mjd_to_tt
 
 
-class DL3(EVTbase):
+class EVT3(EVTbase):
     def __init__(self, eventidfits, timemjd, ra_deg, dec_deg, energy, detx, dety, alt, az, gammaness, mjdref, observationid, datarepositoryid, status):
         super().__init__();
 

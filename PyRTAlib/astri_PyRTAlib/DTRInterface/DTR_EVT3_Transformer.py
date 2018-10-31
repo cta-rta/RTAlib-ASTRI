@@ -24,7 +24,7 @@
 
 from .DTR_Transformer import DTR_Transformer
 
-class DTR_DL3_Transformer(DTR_Transformer):
+class DTR_EVT3_Transformer(DTR_Transformer):
     def __init__(self, configFilePath=''):
         super().__init__(configFilePath)
 
@@ -51,7 +51,7 @@ class DTR_DL3_Transformer(DTR_Transformer):
         return ''
 
 
-    """ Data from RTA_DL3_DB
+    """ Data from RTA_EVT3_DB
         eventidfits,
         time,
         ra_deg,

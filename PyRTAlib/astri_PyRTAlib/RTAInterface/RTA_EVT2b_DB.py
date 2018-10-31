@@ -18,11 +18,11 @@
 #
 # ==========================================================================
 
-from .RTA_DL_DB import RTA_DL_DB
-from ..DataModels import DL2b
+from PyRTAlib.RTAInteface import RTA_DL_DB
+from ..DataModels import EVT2b
 
 
-class RTA_DL2b_DB(RTA_DL_DB):
+class RTA_EVT2b_DB(RTA_DL_DB):
 
     def __init__(self, database, configFilePath = '', pure_multithreading = False):
         super().__init__(database, configFilePath, pure_multithreading)
@@ -31,15 +31,15 @@ class RTA_DL2b_DB(RTA_DL_DB):
         if not self.pure_multithreading and self.config.get('MySqlPipelineDatabase', 'active', 'bool'):
             self.mysqlDbConnector = self.getMySqlConnector(configFilePath, 'MySqlPipelineDatabase')
             if self.mysqlDbConnector.connect():
-                print('[RTA_DL2b_DB] Pipeline updater activated.')
+                print('[RTA_EVT2b_DB] Pipeline updater activated.')
             else:
-                print('[RTA_DL2b_DB] Cannot connect.')
+                print('[RTA_EVT2b_DB] Cannot connect.')
 
 
     def insertEvent(self, eventidfits, observationid, datarepositoryid, status):
-        evt2b = DL2b(eventidfits, observationid, datarepositoryid, status)
+        evt2b = EVT2b(eventidfits, observationid, datarepositoryid, status)
         committed = super()._insertEvent(evt2b)
 
 
     def getRandomEvent(self):
-        return DL2b.getRandomEvent()
+        return EVT2b.getRandomEvent()

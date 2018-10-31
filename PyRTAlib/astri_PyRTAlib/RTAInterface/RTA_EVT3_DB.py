@@ -18,11 +18,11 @@
 #
 # ==========================================================================
 
-from .RTA_DL_DB import RTA_DL_DB
-from ..DataModels import DL3
+from PyRTAlib.RTAInterface.RTA_DL_DB import RTA_DL_DB
+from ..DataModels import EVT3
 
 
-class RTA_DL3_DB(RTA_DL_DB):
+class RTA_EVT3_DB(RTA_DL_DB):
 
     def __init__(self, database, configFilePath = '', pure_multithreading = False):
         super().__init__(database, configFilePath, pure_multithreading)
@@ -31,13 +31,13 @@ class RTA_DL3_DB(RTA_DL_DB):
         if not self.pure_multithreading and self.config.get('MySqlPipelineDatabase', 'active', 'bool'):
             self.mysqlDbConnector = self.getMySqlConnector(configFilePath, 'MySqlPipelineDatabase')
             if self.mysqlDbConnector.connect():
-                print('[RTA_DL3_DB] Pipeline updater activated.')
+                print('[RTA_EVT3_DB] Pipeline updater activated.')
             else:
-                print('[RTA_DL3_DB] Cannot connect.')
+                print('[RTA_EVT3_DB] Cannot connect.')
 
 
     def insertEvent(self, eventidfits, time, ra_deg, dec_deg, energy, detx, dety, alt, az, gammaness, observationid = 1, datarepositoryid = 1, status = 1):
-        evt3 = DL3(eventidfits, time, ra_deg, dec_deg, energy, detx, dety, alt, az, gammaness, self.config.get('General', 'mjdref', 'float'), observationid, datarepositoryid, status)
+        evt3 = EVT3(eventidfits, time, ra_deg, dec_deg, energy, detx, dety, alt, az, gammaness, self.config.get('General', 'mjdref', 'float'), observationid, datarepositoryid, status)
         committed = super()._insertEvent(evt3)
 
         """ this code is not covered by the unit_test.py script """
@@ -50,12 +50,10 @@ class RTA_DL3_DB(RTA_DL_DB):
 
 
     def getRandomEvent(self):
-        return DL3.getRandomEvent()
+        return EVT3.getRandomEvent()
 
     def updatePipeline(self, timerealtt, observationid, datarepositoryid):
         query = 'update observation_to_datarepository set tenddata='+str(timerealtt)+' where observationid='+str(observationid)+' and datarepositoryid='+str(datarepositoryid)
         if self.config.get('MySqlPipelineDatabase', 'debug', 'bool'):
-            print('[RTA_DL3_DB] Updating pipeline..query={}'.format(query))
+            print('[RTA_EVT3_DB] Updating pipeline..query={}'.format(query))
         self.mysqlDbConnector.executeQuery(query)
-
- 

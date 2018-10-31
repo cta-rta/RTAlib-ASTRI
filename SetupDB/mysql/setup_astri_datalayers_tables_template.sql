@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS __DBNAME__;
 
 USE __DBNAME__;
 
-CREATE TABLE IF NOT EXISTS dl3 (
+CREATE TABLE IF NOT EXISTS evt3 (
                                         evtid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                                         eventidfits INTEGER,
                                         observationid INTEGER UNSIGNED,
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS dl3 (
 
 
 
-CREATE TABLE IF NOT EXISTS dl2b (
+CREATE TABLE IF NOT EXISTS evt2b (
                                       evtid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                                       eventidfits INTEGER,
                                       observationid INTEGER UNSIGNED,

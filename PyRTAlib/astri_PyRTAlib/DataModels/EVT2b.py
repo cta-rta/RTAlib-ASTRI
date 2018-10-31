@@ -20,12 +20,10 @@
 import time
 from random import randint, uniform
 
+from PyRTAlib.DataModels.EVTbase import EVTbase
+from PyRTAlib.Utils import time_mjd_to_tt
 
-from .EVTbase import EVTbase
-from ..Utils import time_mjd_to_tt
-
-
-class DL2b(EVTbase):
+class EVT2b(EVTbase):
     def __init__(self, eventidfits, observationid, datarepositoryid):
         super().__init__();
 

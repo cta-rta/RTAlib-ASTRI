@@ -20,13 +20,12 @@ CREATE TABLE IF NOT EXISTS dl3 (
                                         insert_time INTEGER UNSIGNED
                                       );
 
-                                      CREATE DATABASE IF NOT EXISTS __DBNAME__;
 
 
 CREATE TABLE IF NOT EXISTS dl2b (
                                       evtid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                                       eventidfits INTEGER,
                                       observationid INTEGER UNSIGNED,
-                                      datarepositoryid INTEGER UNSIGNED,
-                                    
+                                      datarepositoryid INTEGER UNSIGNED
+
                                     );

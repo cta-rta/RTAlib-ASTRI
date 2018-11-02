@@ -6,11 +6,14 @@
 * A python 3.6 virtual environment
 
 ### Procedure
-* Execute the following commands to create databases, users, tables and configuration files for the RTAlib.
+* Download the source code
 ```bash
 cd ~/
 git clone https://github.com/cta-rta/RTAlib-ASTRI
 git clone https://github.com/rta-pipe/RTAlib
+```
+* Execute the following commands to create databases, users, tables and configuration files for the RTAlib.
+```bash
 cp RTAlib-ASTRI/SetupDB/mysql/setup_astri_datalayers_tables.sql RTAlib/SetupDB/mysql/
 bash RTAlib/SetupDB/setup_db.sh
 ```

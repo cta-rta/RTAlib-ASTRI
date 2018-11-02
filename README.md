@@ -71,4 +71,6 @@ rta_evt3_db.insertEvent( evt2_data.evtnum[i], evt2_data.time[i], evt2_data.ra[i]
 ```
 
 Close the connection
+```python
 rta_evt3_db.waitAndClose()
+```
